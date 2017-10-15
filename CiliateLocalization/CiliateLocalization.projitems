@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>fc14bc94-dc58-440d-b437-a9df4e507422</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>CiliateLocalization</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ILanguage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ILanguageFirstModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ILanguageInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IText.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ITextFirstModel.cs" />
+  </ItemGroup>
+</Project>
