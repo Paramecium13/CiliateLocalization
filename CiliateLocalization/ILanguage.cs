@@ -6,8 +6,8 @@ namespace CiliateLocalization
 {
 	public interface ILanguage
 	{
-		void AddTranslation(string id, string translation);
-		void AddTranslation(uint id, string translation);
+		void SetTranslation(string id, string translation);
+		void SetTranslation(uint id, string translation);
 		string GetTranslation(string id);
 		string GetTranslation(uint id);
 	}

@@ -9,8 +9,8 @@ namespace CiliateLocalization
 		uint NumericId { get; }
 		string TextId { get; }
 		string DefaultText { get; }
-		void AddTranslation(ushort languageIndex, string translation);
-		void AddTranslation(string languageId, string translation);
+		void SetTranslation(ushort languageIndex, string translation);
+		void SetTranslation(string languageId, string translation);
 		string GetTranslation(ushort languageIndex);
 		string GetTranslation(string languageId);
 	}
