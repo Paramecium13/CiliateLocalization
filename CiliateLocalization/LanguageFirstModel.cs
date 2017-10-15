@@ -19,7 +19,7 @@ namespace CiliateLocalization
 
 		public string Name1 { get; set; }
 
-		public readonly Dictionary<uint, string> Translations = new Dictionary<uint, string>();
+		public Dictionary<uint, string> Translations = new Dictionary<uint, string>();
 	}
 
 	public class LanguageFirstModel : ILanguageFirstModel
@@ -44,7 +44,7 @@ namespace CiliateLocalization
 
 		public LanguageFirstModel(IEnumerable<ProtoLanguage> languages, IReadOnlyDictionary<string,uint> translationIds)
 		{
-			Languages = languages.Select(l => new Language(l.Index, l.TextId, this, l.Name0, l.Name1))
+			Languages = languages.Select(l => new Language(l.Index, l.TextId, this, l.Translations, l.Name0, l.Name1))
 				.ToDictionary(l => l.Index);
 			LanguageIds = new IdMap<ushort>(languages.ToDictionary(l => l.TextId, l => l.Index)
 				, x => (ushort)(x + 1),
@@ -94,7 +94,10 @@ namespace CiliateLocalization
 				jLang.Add("Name0", lang.Name0);
 				jLang.Add("Name1", lang.Name1);
 				jLang.Add("TextId", lang.TextId);
-				jLang.Add("Translations", new JObject(lang.Translations));
+				var jTrans = new JObject();
+				foreach (var trans in lang.Translations)
+					jTrans.Add(trans.Key.ToString(), new JValue(trans.Value));
+				jLang.Add("Translations", jTrans);
 				jLangs.Add(lang.TextId, jLang);
 			}
 			json.Add("Languages", jLangs);
@@ -104,14 +107,19 @@ namespace CiliateLocalization
 		public static LanguageFirstModel FromJson(JObject json)
 			=> new LanguageFirstModel(json);
 
+		private static Dictionary<uint, string> Parse(JToken json) => json.Cast<JProperty>()
+				.ToDictionary(p => uint.Parse(p.Name), p => ((JValue)p.First).Value<string>());
+
 		private LanguageFirstModel(JObject json)
 		{
 			var transIds =
 				json["TranslationIds"]
-				.ToDictionary(j => ((JProperty)j).Name,j=> (uint)((JRaw)j).Value);
+				.ToDictionary(j => ((JProperty)j).Name,j=> ((JValue)j.First).Value<uint>());
 			var jLangs = json["Languages"];
-			Languages = jLangs.Cast<JObject>()
-				.Select(j => new Language(j.Value<ushort>("Index"), j.Value<string>("TextId"), this, j.Value<string>("Name0"), j.Value<string>("Name1")))
+			Languages = jLangs.Cast<JProperty>()
+				.Select(j => j.Value)
+				.Cast<JObject>()
+				.Select(j => new Language(j.Value<ushort>("Index"), j.Value<string>("TextId"), this,Parse(j["Translations"]), j.Value<string>("Name0"), j.Value<string>("Name1")))
 				.ToDictionary(l => l.Index);
 			LanguageIds = new IdMap<ushort>(Languages.Values.ToDictionary(l => l.TextId, l => l.Index)
 				, x => (ushort)(x + 1),

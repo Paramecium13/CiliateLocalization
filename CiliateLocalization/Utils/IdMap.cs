@@ -26,7 +26,7 @@ namespace CiliateLocalization.Utils
 		/// <param name="equals"></param>
 		public IdMap(IReadOnlyDictionary<string, T> ids, Func<T, T> increment, Func<T,int,bool> equals)
 		{
-			_Ids = ids; Increment = increment;
+			_Ids = ids.ToDictionary(p => p.Key, p => p.Value); Increment = increment;
 			var vals = ids.Values.ToArray();
 			Array.Sort(vals);
 			IdHoles = new Stack<T>(Collections.Holes(vals, increment, equals));

@@ -7,6 +7,10 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CiliateLocalization", "Cili
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiliateLocalization (.NET 4.6.2)", "..\CiliateLocalization (.NET 4.6.2)\CiliateLocalization (.NET 4.6.2).csproj", "{6E98193B-9914-4F73-B27E-F614FF78EB58}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWriter", "..\TestWriter\TestWriter.csproj", "{7101B2DA-A600-4F74-B58C-30E989291648}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestReader", "TestReader\TestReader.csproj", "{6D3176D5-39CB-47AA-9E91-0892481F1789}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		CiliateLocalization.projitems*{6e98193b-9914-4f73-b27e-f614ff78eb58}*SharedItemsImports = 4
@@ -21,6 +25,14 @@ Global
 		{6E98193B-9914-4F73-B27E-F614FF78EB58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E98193B-9914-4F73-B27E-F614FF78EB58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E98193B-9914-4F73-B27E-F614FF78EB58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7101B2DA-A600-4F74-B58C-30E989291648}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7101B2DA-A600-4F74-B58C-30E989291648}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7101B2DA-A600-4F74-B58C-30E989291648}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7101B2DA-A600-4F74-B58C-30E989291648}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D3176D5-39CB-47AA-9E91-0892481F1789}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D3176D5-39CB-47AA-9E91-0892481F1789}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D3176D5-39CB-47AA-9E91-0892481F1789}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D3176D5-39CB-47AA-9E91-0892481F1789}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
