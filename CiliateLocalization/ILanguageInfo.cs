@@ -6,7 +6,7 @@ namespace CiliateLocalization
 {
 	public interface ILanguageInfo
 	{
-		ushort NumericId { get; }
+		ushort Index { get; }
 		string TextId { get; }
 		string Name0 { get; }
 		string Name1 { get; }

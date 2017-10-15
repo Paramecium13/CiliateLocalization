@@ -9,6 +9,7 @@
     <Import_RootNamespace>CiliateLocalization</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)LanguageInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Text.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TextFirstModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\Collections.cs" />

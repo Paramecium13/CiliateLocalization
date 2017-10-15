@@ -24,7 +24,7 @@ namespace CiliateLocalization.Utils
 		/// <param name="ids"></param>
 		/// <param name="increment">Returns the next value (i.e. value + 1)</param>
 		/// <param name="equals"></param>
-		public IdMap(Dictionary<string, T> ids, Func<T, T> increment, Func<T,int,bool> equals)
+		public IdMap(IReadOnlyDictionary<string, T> ids, Func<T, T> increment, Func<T,int,bool> equals)
 		{
 			_Ids = ids; Increment = increment;
 			var vals = ids.Values.ToArray();
