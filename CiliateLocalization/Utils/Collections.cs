@@ -23,17 +23,15 @@ namespace CiliateLocalization.Utils
 				return new List<T>(0);
 
 			var holes = new List<T>();
-			for (int i = 1; i < sortedValues.Length; i++)
+			var expected = default(T);
+			for (int i = 0; i < sortedValues.Length; i++)
 			{
-				if (!increment(sortedValues[i - 1]).Equals(sortedValues[i]))
+				while (!expected.Equals(sortedValues[i]))
 				{
-					var val = increment(sortedValues[i - 1]);
-					while (!val.Equals(sortedValues[i]))
-					{
-						holes.Add(val);
-						val = increment(val);
-					}
+					holes.Add(expected);
+					expected = increment(expected);
 				}
+				expected = increment(expected);
 			}
 			return holes;
 		}
